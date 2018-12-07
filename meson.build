@@ -40,7 +40,9 @@ endif
 
 if get_option('flatpak')
     dependencies += dependency('flatpak')
+    vapi_dir = join_paths(meson.current_source_dir(), 'vapi')
     add_project_arguments('--define=WITH_FLATPAK', language: 'vala')
+    add_project_arguments(['--vapidir=' + vapi_dir], language: 'vala')
 endif
 
 config_dir = join_paths(get_option('sysconfdir'), meson.project_name())
